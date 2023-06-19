@@ -128,7 +128,9 @@ class Ps_ImageSlider extends Module implements WidgetInterface
             }
 
             // Disable on mobiles and tablets
-            $this->disableDevice(Context::DEVICE_MOBILE);
+            if (!$this->isEnabledForMobileDevices($this->name)) {
+                $this->enableDevice(Context::DEVICE_MOBILE);
+            }
 
             return (bool) $res;
         }
